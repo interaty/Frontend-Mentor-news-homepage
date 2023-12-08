@@ -1,0 +1,438 @@
+:root {
+  /* Colors */
+  --clr-accent-400: hsl(35, 77%, 62%);
+  --clr-accent-600: hsl(5, 85%, 63%);
+  --clr-neutral-200: hsl(36, 100%, 99%);
+  --clr-neutral-300: hsl(233, 8%, 79%);
+  --clr-primary-400: hsl(236, 13%, 42%);
+  --clr-primary-800: hsl(240, 100%, 5%);
+
+  --clr-border: hsl(240, 13%, 37%);
+
+  /* Fonts */
+  --ff-base: "Inter", sans-serif;
+  --fw-400: 400;
+  --fw-700: 700;
+  --fw-800: 800;
+  /* Font sizes */
+  --step--2: clamp(0.6513rem, 0.6273rem + 0.1196vw, 0.72rem);
+  --step--1: clamp(0.7813rem, 0.7399rem + 0.2065vw, 0.9rem);
+  --step-0: clamp(0.9375rem, 0.8723rem + 0.3261vw, 1.125rem);
+  --step-1: clamp(1.125rem, 1.0272rem + 0.4891vw, 1.4063rem);
+  --step-2: clamp(1.35rem, 1.208rem + 0.7098vw, 1.7581rem);
+  --step-3: clamp(1.62rem, 1.4191rem + 1.0043vw, 2.1975rem);
+  --step-4: clamp(1.9438rem, 1.6644rem + 1.3967vw, 2.7469rem);
+  --step-5: clamp(2.3325rem, 1.9497rem + 1.9141vw, 3.4331rem);
+  /* Spaces */
+  --space-3xs: clamp(0.25rem, 0.2283rem + 0.1087vw, 0.3125rem);
+  --space-2xs: clamp(0.5rem, 0.4783rem + 0.1087vw, 0.5625rem);
+  --space-xs: clamp(0.6875rem, 0.6223rem + 0.3261vw, 0.875rem);
+  --space-s: clamp(0.9375rem, 0.8723rem + 0.3261vw, 1.125rem);
+  --space-m: clamp(1.4375rem, 1.3505rem + 0.4348vw, 1.6875rem);
+  --space-l: clamp(1.875rem, 1.7446rem + 0.6522vw, 2.25rem);
+  --space-xl: clamp(2.8125rem, 2.6168rem + 0.9783vw, 3.375rem);
+  --space-2xl: clamp(3.75rem, 3.4891rem + 1.3043vw, 4.5rem);
+  --space-3xl: clamp(5.625rem, 5.2337rem + 1.9565vw, 6.75rem);
+  --gutter: var(--space-m);
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+body {
+  font-family: var(--ff-base);
+  font-size: var(--step-0);
+  background: var(--clr-neutral-200);
+  color: var(--clr-primary-400);
+  padding-block: var(--gutter);
+}
+
+:is(h1, h2, h3) {
+  max-width: 30ch;
+}
+
+h1 {
+  font-size: var(--step-5);
+}
+
+h2 {
+  font-size: var(--step-4);
+}
+
+h3 {
+  font-size: var(--step-3);
+}
+
+h4 {
+  font-size: var(--step-1);
+}
+
+h5 {
+  font-size: var(--step-0);
+}
+
+p {
+  max-width: 60ch;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+.sr-only {
+  position: absolute;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Utilities */
+
+.flow > * + * {
+  margin-top: var(--flow-space, 1em);
+}
+
+.wrapper {
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.box {
+  padding: var(--gutter);
+  border: var(--border-thin) solid;
+  --color-light: var(--clr-neutral-200);
+  --color-dark: var(--clr-primary-800);
+  color: var(--color-dark);
+  background-color: var(--color-light);
+}
+
+.box * {
+  color: inherit;
+}
+
+.box.invert {
+  color: var(--color-light);
+  background-color: var(--color-dark);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space, 1rem);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.with-sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gutter);
+}
+
+.sidebar {
+  flex-basis: 35ch;
+  flex-grow: 1;
+}
+
+.non-sidebar {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: 50%;
+}
+
+.switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gutter);
+}
+
+.switcher > * {
+  flex-grow: 1;
+  flex-basis: calc((30rem - 100%) * 999);
+}
+
+.switcher > :nth-last-child(n + 5),
+.switcher > :nth-last-child(n + 5) ~ * {
+  flex-basis: 100%;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stack > * {
+  margin-block: 0;
+}
+
+.stack > * + * {
+  margin-block-start: var(--space, var(--gutter));
+}
+
+.frame {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.frame > img,
+.frame > video {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.grid {
+  display: grid;
+  grid-gap: var(--gutter);
+}
+
+@supports (width: min(30ch, 100%)) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(30ch, 100%), 1fr));
+  }
+}
+
+.bg-primary-800 {
+  background-color: var(--clr-primary-800);
+}
+
+.clr-accent-400 {
+  color: var(--clr-accent-400);
+}
+
+.clr-neutral-200 {
+  color: var(--clr-neutral-200);
+}
+.clr-neutral-300 {
+  color: var(--clr-neutral-300);
+}
+
+.clr-primary-800 {
+  color: var(--clr-primary-800);
+}
+
+.button {
+  text-transform: uppercase;
+  color: var(--clr-neutral-200);
+  font-weight: var(--fw-700);
+  font-size: var(--step--1);
+  background-color: var(--clr-accent-600);
+  letter-spacing: 0.3ch;
+  padding-inline: 2em;
+  padding-block: 0.75em;
+  border: none;
+  cursor: pointer;
+  margin-top: var(--gutter);
+  transition: background-color ease 0.25s;
+}
+
+.button:is(:focus, :hover) {
+  background-color: var(--clr-primary-800);
+}
+
+.hover-600:is(:focus, :hover) {
+  color: var(--clr-accent-600);
+}
+
+.hover-400:is(:focus, :hover) {
+  color: var(--clr-accent-400);
+}
+
+.hover-400,
+.hover-600 {
+  transition: color ease 0.2s;
+}
+
+.num {
+  font-size: var(--step-3);
+  font-weight: var(--fw-700);
+  color: var(--clr-neutral-300);
+}
+
+/* Components */
+
+/* Navigation */
+.mobile-nav-toggle {
+  display: none;
+}
+
+.mobile-nav-toggle[aria-expanded="true"] {
+  position: fixed;
+  right: var(--space-l);
+  z-index: 20;
+}
+
+@media (max-width: 35em) {
+  .primary-navigation {
+    color: var(--clr-primary-800);
+    position: fixed;
+    z-index: 10;
+    background-color: var(--clr-neutral-200);
+    inset: 0 0 0 35%;
+    font-size: var(--step-2);
+    transform: translateX(100%);
+    transition: transform ease 0.8s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--space-l);
+  }
+
+  .primary-navigation[data-visible] {
+    transform: translateX(0%);
+  }
+
+  .primary-navigation > * {
+    margin-inline-start: var(--space-l);
+  }
+
+  .primary-navigation > :last-child {
+    margin-block-end: 25vh;
+  }
+
+  .icon-close[data-visible="true"],
+  .icon-hamburger[data-visible="true"] {
+    display: block;
+  }
+  .icon-close[data-visible="false"],
+  .icon-hamburger[data-visible="false"] {
+    display: none;
+  }
+
+  .mobile-nav-toggle {
+    display: block;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+  }
+}
+
+/* Hero */
+.hero-sidebar {
+  --flow-space: 0.75em;
+  align-self: stretch;
+}
+
+.hero-sidebar div[role="list"] {
+  justify-self: stretch;
+}
+
+.hero-sidebar div[role="list"] > :not(:last-child) {
+  padding-bottom: var(--space-l);
+  border-bottom: 1px solid;
+  border-color: var(--clr-border);
+}
+
+/* Articles */
+.article {
+  --space: 0.5em;
+  display: flex;
+  gap: var(--space-s);
+}
+
+.article .frame {
+  flex-basis: 10ch;
+}
+
+.article-content {
+  justify-content: space-between;
+}
